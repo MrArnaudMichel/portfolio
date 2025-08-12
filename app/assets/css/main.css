@@ -6,22 +6,53 @@
 @theme static {
   --font-sans: 'Public Sans', sans-serif;
 
-  --color-green-50: #EFFDF5;
-  --color-green-100: #D9FBE8;
-  --color-green-200: #B3F5D1;
-  --color-green-300: #75EDAE;
-  --color-green-400: #00DC82;
-  --color-green-500: #00C16A;
-  --color-green-600: #00A155;
-  --color-green-700: #007F45;
-  --color-green-800: #016538;
-  --color-green-900: #0A5331;
-  --color-green-950: #052E16;
+
+  --color-green-300: hsla(159, 42%, 88%, 1);
+  --color-green-400: hsla(160, 52%, 71%, 1);
+  --color-green-500: hsla(172, 95%, 18%, 1);
+  --color-green-600: hsla(171, 15%, 35%, 1);
+  --color-green-700: hsla(171, 11%, 24%, 1);
+  --color-green-800: hsla(158, 23%, 18%, 1);
+
+  --color-beige-500: hsla(36, 31%, 90%, 1);
+
+  --color-primary: var(--color-green-500);
+  --color-primary-accent: var(--color-green-400);
+
+  --ui-text-highlighted: var(--color-green-500);
+  --ui-border: var(--color-green-500);
+  --ui-border-accented: var(--color-green-400);
+  --ui-bg: var(--color-beige-500);
+  --ui-bg-elevated: var(--color-beige-500);
+
+  --ui-text-muted: var(--color-green-600);
 }
 
 .dark {
-  --ui-bg: var(--ui-color-neutral-950);
-  --ui-bg-muted: var(--ui-color-neutral-900);
-  --ui-bg-elevated: var(--ui-color-neutral-900);
-  --ui-bg-accented: var(--ui-color-neutral-800);
+  --bg-primary: var(--color-green-500);
+  --ui-bg-muted: var(--color-green-800);
+  --ui-bg-elevated: var(--color-green-800);
+  --ui-bg-accented: var(--color-green-700);
+
+  --color-primary: var(--color-green-400);
+  --color-primary-accent: var(--color-green-300);
+
+  --ui-text-highlighted: var(--color-green-400);
+  --ui-border: var(--color-green-400);
+  --ui-border-accented: var(--color-green-300);
+  --ui-bg: var(--color-green-800);
+
+  --ui-text-muted: var(--color-green-300);
+}
+
+h1, h2, h3 {
+  font-family: 'Arcon Bold', sans-serif;
+}
+
+
+@font-face {
+  font-family: 'Arcon Bold';
+  src: url('../../../public/fonts/Arcon/Acorn-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
 }

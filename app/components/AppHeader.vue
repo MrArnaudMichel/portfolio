@@ -22,7 +22,9 @@ const items = computed(() => [{
 </script>
 
 <template>
-  <UHeader>
+  <UHeader
+    class="w-1/2 max-w-full mx-auto border-0 rounded-xl top-4"
+  >
     <template #left>
       <NuxtLink to="/">
         <LogoPro class="w-auto h-6 shrink-0" />
