@@ -21,9 +21,14 @@
 
   --ui-text-highlighted: var(--color-green-500);
   --ui-border: var(--color-green-500);
-  --ui-border-accented: var(--color-green-400);
+  --ui-border-accented: var(--color-green-500);
   --ui-bg: var(--color-beige-500);
+  --ui-bg-muted: var(--color-beige-500);
+  --ui-border-muted: var(--color-green-500);
   --ui-bg-elevated: var(--color-beige-500);
+
+
+  --ui-bg-inverted: var(--color-green-500);
 
   --ui-text-muted: var(--color-green-600);
 }
@@ -39,8 +44,11 @@
 
   --ui-text-highlighted: var(--color-green-400);
   --ui-border: var(--color-green-400);
+  --ui-border-muted: var(--color-green-600);
   --ui-border-accented: var(--color-green-300);
   --ui-bg: var(--color-green-800);
+
+  --ui-bg-inverted: var(--color-green-400);
 
   --ui-text-muted: var(--color-green-300);
 }
@@ -55,4 +63,11 @@ h1, h2, h3 {
   src: url('../../../public/fonts/Arcon/Acorn-Bold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
+}
+
+@media (width >= 40rem) {
+.main-title h1 {
+    font-size: var(--text-9xl) /* 1.5rem = 24px */;
+    line-height: var(--tw-leading, var(--text-9xl--line-height) /* calc(2 / 1.5) ≈ 1.3333 */);
+  }
 }

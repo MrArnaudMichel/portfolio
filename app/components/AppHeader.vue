@@ -2,12 +2,9 @@
 const route = useRoute()
 
 const items = computed(() => [{
-  label: 'Docs',
+  label: 'Home',
   to: '/docs',
   active: route.path.startsWith('/docs')
-}, {
-  label: 'Pricing',
-  to: '/pricing'
 }, {
   label: 'Blog',
   to: '/blog'
@@ -24,12 +21,14 @@ const items = computed(() => [{
 <template>
   <UHeader
     class="w-1/2 max-w-full mx-auto border-0 rounded-xl top-4"
+    title=""
   >
     <template #left>
       <NuxtLink to="/">
-        <LogoPro class="w-auto h-6 shrink-0" />
+        <h1 class="text-2xl font-bold text-primary">am</h1>
+<!--        <nuxt-img src="/logo.svg" alt="Logo" width="100" height="24" />-->
       </NuxtLink>
-      <TemplateMenu />
+      <!--      <TemplateMenu /> -->
     </template>
 
     <UNavigationMenu
