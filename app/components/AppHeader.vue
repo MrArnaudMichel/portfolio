@@ -3,8 +3,8 @@ const route = useRoute()
 
 const items = computed(() => [{
   label: 'Home',
-  to: '/docs',
-  active: route.path.startsWith('/docs'),
+  to: '/',
+  active: route.path === '/',
   badge: {
     label: '/',
     variant: 'subtle' as const,
@@ -12,8 +12,14 @@ const items = computed(() => [{
   },
   class: 'text-md'
 }, {
-  label: 'Blog',
-  to: '/blog',
+  label: 'Projects',
+  active: route.path.startsWith('/projects'),
+  to: '/projects',
+  class: 'text-md'
+}, {
+  label: 'Career',
+  active: route.path.startsWith('/docs'),
+  to: '/docs',
   class: 'text-md'
 }, {
   label: 'Changelog',

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'docs'
+  layout: 'career'
 })
 
 const route = useRoute()

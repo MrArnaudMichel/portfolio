@@ -37,7 +37,7 @@ const links = [{
 }, {
   label: 'Blog',
   icon: 'i-lucide-pencil',
-  to: '/blog'
+  to: '/projects'
 }]
 </script>
 

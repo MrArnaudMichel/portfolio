@@ -110,11 +110,11 @@ export const collections = {
     })
   }),
   blog: defineCollection({
-    source: '3.blog.yml',
+    source: '3.projects.yml',
     type: 'page'
   }),
   posts: defineCollection({
-    source: '3.blog/**/*',
+    source: '3.projects/**/*',
     type: 'page',
     schema: z.object({
       image: z.object({ src: z.string().nonempty().editor({ input: 'media' }) }),
