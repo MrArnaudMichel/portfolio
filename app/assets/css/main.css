@@ -14,7 +14,12 @@
   --color-green-700: hsla(171, 11%, 24%, 1);
   --color-green-800: hsla(158, 23%, 18%, 1);
 
+  --color-beige-300: hsla(36, 31%, 95%, 1);
+  --color-beige-400: hsla(36, 31%, 92%, 1);
   --color-beige-500: hsla(36, 31%, 90%, 1);
+  --color-beige-600: hsla(36, 20%, 80%, 1);
+  --color-beige-700: hsla(36, 20%, 70%, 1);
+  --color-beige-800: hsla(36, 20%, 60%, 1);
 
   --color-primary: var(--color-green-500);
   --color-primary-accent: var(--color-green-400);
@@ -57,12 +62,22 @@ h1, h2, h3 {
   font-family: 'Arcon Bold', sans-serif;
 }
 
+* {
+  font-family: 'OakSans', sans-serif;
+}
+
 
 @font-face {
   font-family: 'Arcon Bold';
-  src: url('../../../public/fonts/Arcon/Acorn-Bold.otf') format('opentype');
+  src: url('../../../public/fonts/arcon/Acorn-Bold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
+}
+
+@font-face {
+  font-family: 'OakSans';
+  src: url('../../../public/fonts/oaksans/OakSans-Regular.woff2') format('woff2');
+  font-weight: normal;
 }
 
 @media (width >= 40rem) {

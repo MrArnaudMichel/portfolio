@@ -4,17 +4,25 @@ const route = useRoute()
 const items = computed(() => [{
   label: 'Home',
   to: '/docs',
-  active: route.path.startsWith('/docs')
+  active: route.path.startsWith('/docs'),
+  badge: {
+    label: '/',
+    variant: 'subtle' as const,
+    color: 'primary' as const
+  },
+  class: 'text-md'
 }, {
   label: 'Blog',
-  to: '/blog'
+  to: '/blog',
+  class: 'text-md'
 }, {
   label: 'Changelog',
   to: '/changelog',
   badge: {
     label: 'New',
     color: 'primary' as const
-  }
+  },
+  class: 'text-md'
 }])
 </script>
 
@@ -33,7 +41,7 @@ const items = computed(() => [{
 
     <UNavigationMenu
       :items="items"
-      variant="link"
+      variant="pill"
     />
 
     <template #right>
