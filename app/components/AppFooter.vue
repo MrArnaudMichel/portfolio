@@ -1,6 +1,9 @@
 <script setup lang="ts">
+
+const repoUrl = 'https://github.com/MrArnaudMichel/portfolio2025'
+
 const columns = [{
-  label: 'Resources',
+  label: 'Contact',
   children: [{
     label: 'Help center'
   }, {
@@ -11,7 +14,7 @@ const columns = [{
     label: 'Changelog'
   }]
 }, {
-  label: 'Features',
+  label: 'Profiles & Links',
   children: [{
     label: 'Affiliates'
   }, {
@@ -20,17 +23,6 @@ const columns = [{
     label: 'Jobs'
   }, {
     label: 'Sponsors'
-  }]
-}, {
-  label: 'Company',
-  children: [{
-    label: 'About'
-  }, {
-    label: 'Pricing'
-  }, {
-    label: 'Careers'
-  }, {
-    label: 'Blog'
   }]
 }]
 
@@ -60,29 +52,25 @@ function onSubmit() {
       <UContainer>
         <UFooterColumns :columns="columns">
           <template #right>
-            <form @submit.prevent="onSubmit">
-              <UFormField
-                name="email"
-                label="Subscribe to our newsletter"
-                size="lg"
-              >
-                <UInput
-                  v-model="email"
-                  type="email"
-                  class="w-full"
-                  placeholder="Enter your email"
-                >
-                  <template #trailing>
-                    <UButton
-                      type="submit"
-                      size="xs"
-                      color="neutral"
-                      label="Subscribe"
-                    />
-                  </template>
-                </UInput>
-              </UFormField>
-            </form>
+            <div>
+              <div class="space-y-3 md:col-span-2">
+                <h2 class="text-lg font-semibold">
+                  About this site
+                </h2>
+                <p class="text-sm text-muted">
+                  This is a personal portfolio. The website source code is available on GitHub. Check the repository here:
+                </p>
+                <UButton
+                  :to="repoUrl"
+                  target="_blank"
+                  color="primary"
+                  variant="subtle"
+                  icon="i-simple-icons-github"
+                  label="MrArnaudMichel/portfolio2025"
+                  class="ml-1 align-baseline"
+                />
+              </div>
+            </div>
           </template>
         </UFooterColumns>
       </UContainer>

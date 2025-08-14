@@ -109,7 +109,7 @@ export const collections = {
       })
     })
   }),
-  blog: defineCollection({
+  projects: defineCollection({
     source: '3.projects.yml',
     type: 'page'
   }),

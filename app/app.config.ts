@@ -1,4 +1,9 @@
 export default defineAppConfig({
+  content: {
+    markdown: {
+      image: { sizes: false } // désactive l'intégration nuxt-img
+    }
+  },
   ui: {
     colors: {
       primary: 'green',

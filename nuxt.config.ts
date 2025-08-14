@@ -5,10 +5,10 @@ export default defineNuxtConfig(
   {
     modules: [
       '@nuxt/eslint',
-      '@nuxt/image',
+      '@vueuse/nuxt',
+      // '@nuxt/image',
       '@nuxt/ui-pro',
       '@nuxt/content',
-      '@vueuse/nuxt',
       'nuxt-og-image'
     ],
 
