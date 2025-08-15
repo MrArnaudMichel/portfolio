@@ -22,6 +22,17 @@ useSeoMeta({
   ogDescription: description
 })
 
+type MinimalPostDetail = { date?: Date | string, start_date?: Date | string, end_date?: Date | string }
+
+const formatDate = (d?: Date | string) => d ? new Date(d).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) : ''
+const dateDisplay = computed(() => {
+  const p = post.value as unknown as MinimalPostDetail
+  const start = p?.start_date
+  const end = p?.end_date || p?.date
+  if (start && end) return `${formatDate(start)} – ${formatDate(end)}`
+  return formatDate(end || start)
+})
+
 if (post.value.image?.src) {
   defineOgImage({
     url: post.value.image.src
@@ -45,7 +56,7 @@ if (post.value.image?.src) {
           variant="subtle"
         />
         <span class="text-muted">&middot;</span>
-        <time class="text-muted">{{ new Date(post.date).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) }}</time>
+        <time class="text-muted">{{ dateDisplay }}</time>
         <span class="text-muted">&middot;</span>
         <UBadge v-if="post.main_language" variant="subtle">
           {{ post.main_language }}

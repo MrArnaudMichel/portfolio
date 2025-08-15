@@ -125,7 +125,11 @@ export const collections = {
           avatar: z.object({ src: z.string().nonempty().editor({ input: 'media' }) })
         })
       ),
+      // Original end date for backward compatibility
       date: z.date(),
+      // New optional date range fields
+      start_date: z.date().optional(),
+      end_date: z.date().optional(),
       badge: z.object({ label: z.string().nonempty() }),
       website: z.string().optional(),
       git_repo: z.string().optional(),
