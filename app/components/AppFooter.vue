@@ -86,7 +86,7 @@ function onSubmit() {
       <UColorModeButton />
 
       <UButton
-        to="https://github.com/nuxt-ui-pro/saas"
+        :to="repoUrl"
         target="_blank"
         icon="i-simple-icons-github"
         aria-label="GitHub"

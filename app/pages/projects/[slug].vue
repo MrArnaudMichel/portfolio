@@ -64,27 +64,28 @@ if (post.value.image?.src) {
       </template>
 
       <div class="flex items-center gap-3 mt-4">
-        <span class="text-muted text-sm">Authors</span>
-        <div class="flex items-center gap-2">
-          <UTooltip
-            v-for="(author, index) in post.authors"
-            :key="index"
-            :text="author.name"
-          >
-            <NuxtLink :to="author.to" target="_blank" class="inline-flex">
-              <UAvatar
-                v-bind="author.avatar"
-                alt="Author avatar"
-                size="sm"
-              />
-            </NuxtLink>
-          </UTooltip>
-        </div>
+        <UButton
+          v-for="(author, index) in post.authors"
+          :key="index"
+          :to="author.to"
+          color="neutral"
+          variant="subtle"
+          target="_blank"
+          size="sm"
+        >
+          <UAvatar
+            v-bind="author.avatar"
+            alt="Author avatar"
+            size="2xs"
+          />
+
+          {{ author.name }}
+        </UButton>
       </div>
 
       <div class="flex flex-col gap-3 mt-4">
         <div class="flex items-center gap-2">
-          <UBadge v-if="post.role" variant="soft" color="primary" size="sm">
+          <UBadge v-if="post.role" variant="subtle" color="primary" size="lg">
             {{ post.role }}
           </UBadge>
         </div>
@@ -94,7 +95,6 @@ if (post.value.image?.src) {
             :to="post.website"
             target="_blank"
             color="primary"
-            variant="soft"
             icon="i-lucide:globe"
             size="sm"
           >
@@ -105,7 +105,7 @@ if (post.value.image?.src) {
             :to="post.git_repo"
             target="_blank"
             color="neutral"
-            variant="soft"
+            variant="subtle"
             icon="i-simple-icons:github"
             size="sm"
           >
