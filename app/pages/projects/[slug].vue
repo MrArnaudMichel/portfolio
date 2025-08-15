@@ -46,26 +46,61 @@ if (post.value.image?.src) {
         />
         <span class="text-muted">&middot;</span>
         <time class="text-muted">{{ new Date(post.date).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) }}</time>
+        <span class="text-muted">&middot;</span>
+        <UBadge v-if="post.main_language" variant="subtle">
+          {{ post.main_language }}
+        </UBadge>
       </template>
 
-      <div class="flex flex-wrap items-center gap-3 mt-4">
-        <UButton
-          v-for="(author, index) in post.authors"
-          :key="index"
-          :to="author.to"
-          color="neutral"
-          variant="subtle"
-          target="_blank"
-          size="sm"
-        >
-          <UAvatar
-            v-bind="author.avatar"
-            alt="Author avatar"
-            size="2xs"
-          />
+      <div class="flex items-center gap-3 mt-4">
+        <span class="text-muted text-sm">Authors</span>
+        <div class="flex items-center gap-2">
+          <UTooltip
+            v-for="(author, index) in post.authors"
+            :key="index"
+            :text="author.name"
+          >
+            <NuxtLink :to="author.to" target="_blank" class="inline-flex">
+              <UAvatar
+                v-bind="author.avatar"
+                alt="Author avatar"
+                size="sm"
+              />
+            </NuxtLink>
+          </UTooltip>
+        </div>
+      </div>
 
-          {{ author.name }}
-        </UButton>
+      <div class="flex flex-col gap-3 mt-4">
+        <div class="flex items-center gap-2">
+          <UBadge v-if="post.role" variant="soft" color="primary" size="sm">
+            {{ post.role }}
+          </UBadge>
+        </div>
+        <div class="flex items-center gap-2">
+          <UButton
+            v-if="post.website"
+            :to="post.website"
+            target="_blank"
+            color="primary"
+            variant="soft"
+            icon="i-lucide:globe"
+            size="sm"
+          >
+            Voir le site
+          </UButton>
+          <UButton
+            v-if="post.git_repo"
+            :to="post.git_repo"
+            target="_blank"
+            color="neutral"
+            variant="soft"
+            icon="i-simple-icons:github"
+            size="sm"
+          >
+            Voir le dépôt
+          </UButton>
+        </div>
       </div>
     </UPageHeader>
 

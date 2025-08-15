@@ -26,23 +26,27 @@ defineOgImageComponent('Saas')
 
     <UPageBody>
       <UBlogPosts>
-        <UBlogPost
-          v-for="(post, index) in posts"
-          :key="index"
-          :to="post.path"
-          :title="post.title"
-          :description="post.description"
-          :image="post.image"
-          :date="new Date(post.date).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' })"
-          :authors="post.authors"
-          :badge="post.badge"
-          :orientation="index === 0 ? 'horizontal' : 'vertical'"
-          :class="[index === 0 && 'col-span-full']"
-          variant="naked"
-          :ui="{
-            description: 'line-clamp-2'
-          }"
-        />
+        <div v-for="(post, index) in posts" :key="index" :class="[index === 0 && 'col-span-full']">
+          <UBlogPost
+            :to="post.path"
+            :title="post.title"
+            :description="post.description"
+            :image="post.image"
+            :date="new Date(post.date).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' })"
+            :authors="post.authors"
+            :badge="post.badge"
+            :orientation="index === 0 ? 'horizontal' : 'vertical'"
+            variant="naked"
+            :ui="{
+              description: 'line-clamp-2'
+            }"
+          />
+          <div class="flex items-center gap-2 mt-2">
+            <UBadge v-if="post.main_language" variant="soft" color="neutral" size="xs">
+              {{ post.main_language }}
+            </UBadge>
+          </div>
+        </div>
       </UBlogPosts>
     </UPageBody>
   </UContainer>

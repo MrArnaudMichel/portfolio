@@ -126,7 +126,11 @@ export const collections = {
         })
       ),
       date: z.date(),
-      badge: z.object({ label: z.string().nonempty() })
+      badge: z.object({ label: z.string().nonempty() }),
+      website: z.string().optional(),
+      git_repo: z.string().optional(),
+      role: z.string().optional(),
+      main_language: z.string().optional()
     })
   }),
   changelog: defineCollection({
