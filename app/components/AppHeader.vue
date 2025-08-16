@@ -18,29 +18,21 @@ const items = computed(() => [{
   class: 'text-md'
 }, {
   label: 'Career',
-  active: route.path.startsWith('/docs'),
-  to: '/docs',
-  class: 'text-md'
-}, {
-  label: 'Changelog',
-  to: '/changelog',
-  badge: {
-    label: 'New',
-    color: 'primary' as const
-  },
+  active: route.path.startsWith('/career'),
+  to: '/career',
   class: 'text-md'
 }])
 </script>
 
 <template>
   <UHeader
-    class="w-1/2 max-w-full mx-auto border-0 rounded-xl top-4"
+    class="lg:w-1/2 lg:max-w-full lg:mx-auto lg:border-0 lg:rounded-xl lg:top-4"
     title=""
   >
     <template #left>
       <NuxtLink to="/">
-        <h1 class="text-2xl font-bold text-primary">am</h1>
-<!--        <nuxt-img src="/logo.svg" alt="Logo" width="100" height="24" />-->
+        <h1 class="text-2xl font-bold text-primary">Arnaud Michel</h1>
+        <!-- <nuxt-img src="/logo.svg" alt="Logo" width="100" height="24" /> -->
       </NuxtLink>
       <!--      <TemplateMenu /> -->
     </template>

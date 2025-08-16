@@ -65,8 +65,3 @@ This is the 2025 version of my personal portfolio. It showcases my projects, car
 - Dark/light themes, responsive design
 - Content‑first approach with custom components
 - Clean UX with clear calls to action
-
-## Links
-
-- Website: https://arnaudmichel.fr
-- Repository: https://github.com/MrArnaudMichel/portfolio2025

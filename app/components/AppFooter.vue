@@ -3,26 +3,42 @@
 const repoUrl = 'https://github.com/MrArnaudMichel/portfolio2025'
 
 const columns = [{
-  label: 'Contact',
+  label: 'Docs',
   children: [{
-    label: 'Help center'
+    label: 'Home',
+    icon: 'i-lucide-home',
+    to: '/'
   }, {
-    label: 'Docs'
+    label: 'Projects',
+    icon: 'i-lucide-book',
+    to: '/projects'
   }, {
-    label: 'Roadmap'
-  }, {
-    label: 'Changelog'
+    label: 'Career',
+    icon: 'i-lucide-briefcase',
+    to: '/career'
   }]
 }, {
-  label: 'Profiles & Links',
+  label: 'Social',
   children: [{
-    label: 'Affiliates'
+    label: 'Github',
+    icon: 'i-simple-icons-github',
+    to: 'https://github.com/MrArnaudMichel',
+    target: '_blank'
   }, {
-    label: 'Portal'
+    label: 'Gitlab',
+    icon: 'i-simple-icons-gitlab',
+    to: 'https://gitlab.com/MrArnaudMichel',
+    target: '_blank'
   }, {
-    label: 'Jobs'
+    label: 'Linkedin',
+    icon: 'i-simple-icons-linkedin',
+    to: 'https://www.linkedin.com/in/mrarnaudmichel/',
+    target: '_blank'
   }, {
-    label: 'Sponsors'
+    label: 'CV',
+    icon: 'i-simple-icons-readme',
+    to: '/cv.pdf',
+    target: '_blank'
   }]
 }]
 

@@ -1,0 +1,42 @@
+---
+title: 'URL Shortener'
+description: 'A privacy‑friendly URL shortener with custom slugs and analytics.'
+image:
+  src: /images/projects/url-shortener/cover.png
+authors:
+  - name: Arnaud Michel
+    to: https://github.com/MrArnaudMichel
+    avatar:
+      src: https://github.com/MrArnaudMichel.png
+date: 2024-05-12
+start_date: 2024-04-01
+end_date: 2024-05-12
+badge:
+  label: Web
+website: https://example.com/url
+git_repo: https://github.com/MrArnaudMichel/url-shortener
+role: Full‑stack developer
+main_language: TypeScript
+---
+
+## Overview
+
+A tiny but robust URL shortener. It supports custom slugs, password protection, and expiring links with lightweight analytics.
+
+## Stack
+
+- Nuxt 3 + Nitro server routes
+- SQLite/Prisma (or Supabase)
+- Tailwind CSS
+
+## Responsibilities
+
+- Designed the DB schema and API endpoints
+- Implemented analytics and rate‑limiting
+- Built the UI with focus on accessibility
+
+## Highlights
+
+- Fast redirects with edge deployment
+- Safe by default: optional password and expiry
+- Simple analytics without tracking users
