@@ -19,8 +19,8 @@ export default defineNuxtConfig(
     css: ['~/assets/css/main.css'],
 
     routeRules: {
-      '/docs': {
-        redirect: '/docs/getting-started',
+      '/career': {
+        redirect: '/career/schooling',
         prerender: false
       }
     },
