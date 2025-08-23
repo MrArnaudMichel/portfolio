@@ -10,7 +10,7 @@ useHead({
     { key: 'theme-color', name: 'theme-color', content: color }
   ],
   link: [
-    { rel: 'icon', href: '/favicon.ico' }
+    { rel: 'icon', href: '/logo.png' }
   ],
   htmlAttrs: {
     lang: 'en'
@@ -24,20 +24,20 @@ useSeoMeta({
   twitterCard: 'summary_large_image'
 })
 
-const { data: navigation } = await useAsyncData('navigation', () => queryCollectionNavigation('docs'), {
-  transform: data => data.find(item => item.path === '/docs')?.children || []
+const { data: navigation } = await useAsyncData('navigation', () => queryCollectionNavigation('background'), {
+  transform: data => data.find(item => item.path === '/background')?.children || []
 })
-const { data: files } = useLazyAsyncData('search', () => queryCollectionSearchSections('docs'), {
+const { data: files } = useLazyAsyncData('search', () => queryCollectionSearchSections('background'), {
   server: false
 })
 
 const links = [{
-  label: 'Docs',
+  label: 'Background',
   icon: 'i-lucide-book',
-  to: '/docs/getting-started'
+  to: '/background/schooling'
 }, {
-  label: 'Blog',
-  icon: 'i-lucide-pencil',
+  label: 'Projects',
+  icon: 'i-lucide-layout-grid',
   to: '/projects'
 }]
 

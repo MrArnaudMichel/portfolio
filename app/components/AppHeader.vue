@@ -17,9 +17,9 @@ const items = computed(() => [{
   to: '/projects',
   class: 'text-md'
 }, {
-  label: 'Career',
-  active: route.path.startsWith('/career'),
-  to: '/career',
+  label: 'Background',
+  active: route.path.startsWith('/background'),
+  to: '/background',
   class: 'text-md'
 }])
 </script>
@@ -32,7 +32,6 @@ const items = computed(() => [{
     <template #left>
       <NuxtLink to="/">
         <h1 class="text-2xl font-bold text-primary">Arnaud Michel</h1>
-        <!-- <nuxt-img src="/logo.svg" alt="Logo" width="100" height="24" /> -->
       </NuxtLink>
       <!--      <TemplateMenu /> -->
     </template>
@@ -54,19 +53,12 @@ const items = computed(() => [{
       />
 
       <UButton
-        label="Sign in"
-        color="neutral"
-        variant="outline"
-        to="/login"
-        class="hidden lg:inline-flex"
-      />
-
-      <UButton
-        label="Sign up"
+        label="My GitHub"
+        icon="i-simple-icons-github"
         color="neutral"
         trailing-icon="i-lucide-arrow-right"
         class="hidden lg:inline-flex"
-        to="/signup"
+        to="https://github.com/MrArnaudMichel"
       />
     </template>
 

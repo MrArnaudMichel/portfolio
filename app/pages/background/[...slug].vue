@@ -1,20 +1,20 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'career'
+  layout: 'background'
 })
 
 const route = useRoute()
 
 // Map /career/... to the corresponding /docs/... path in content
-const docsPath = computed(() => route.path.replace(/^\/career/, '/docs'))
+const docsPath = computed(() => route.path.replace(/^\/backgroundr/, '/background'))
 
-const { data: page } = await useAsyncData(docsPath.value, () => queryCollection('docs').path(docsPath.value).first())
+const { data: page } = await useAsyncData(docsPath.value, () => queryCollection('background').path(docsPath.value).first())
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
 const { data: surround } = await useAsyncData(`${docsPath.value}-surround`, () => {
-  return queryCollectionItemSurroundings('docs', docsPath.value, {
+  return queryCollectionItemSurroundings('background', docsPath.value, {
     fields: ['description']
   })
 })

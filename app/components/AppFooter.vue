@@ -13,9 +13,9 @@ const columns = [{
     icon: 'i-lucide-book',
     to: '/projects'
   }, {
-    label: 'Career',
+    label: 'Background',
     icon: 'i-lucide-briefcase',
-    to: '/career'
+    to: '/background'
   }]
 }, {
   label: 'Social',
@@ -59,7 +59,7 @@ function onSubmit() {
 
 <template>
   <USeparator
-    icon="i-simple-icons-nuxtdotjs"
+    icon="i-lucide-chevron-down"
     class="h-px"
   />
 

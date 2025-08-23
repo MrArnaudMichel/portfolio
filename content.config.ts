@@ -71,8 +71,8 @@ export const collections = {
       })
     })
   }),
-  docs: defineCollection({
-    source: '1.docs/**/*',
+  background: defineCollection({
+    source: '1.background/**/*',
     type: 'page'
   }),
   pricing: defineCollection({
