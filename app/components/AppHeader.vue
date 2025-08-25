@@ -45,14 +45,6 @@ const items = computed(() => [{
       <UColorModeButton />
 
       <UButton
-        icon="i-lucide-log-in"
-        color="neutral"
-        variant="ghost"
-        to="/login"
-        class="lg:hidden"
-      />
-
-      <UButton
         label="My GitHub"
         icon="i-simple-icons-github"
         color="neutral"
@@ -67,23 +59,6 @@ const items = computed(() => [{
         :items="items"
         orientation="vertical"
         class="-mx-2.5"
-      />
-
-      <USeparator class="my-6" />
-
-      <UButton
-        label="Sign in"
-        color="neutral"
-        variant="subtle"
-        to="/login"
-        block
-        class="mb-3"
-      />
-      <UButton
-        label="Sign up"
-        color="neutral"
-        to="/signup"
-        block
       />
     </template>
   </UHeader>
