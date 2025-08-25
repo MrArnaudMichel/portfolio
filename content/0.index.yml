@@ -9,14 +9,15 @@ hero:
     - label: Explore projects
       icon: i-lucide-arrow-right
       trailing: true
-      to: "#projects"
+      to: '#projects'
       size: xl
+      color: primary
     - label: About
       icon: i-lucide-user
       size: xl
       color: neutral
       variant: subtle
-      to: "#about"
+      to: '#about'
 sections:
   - title: About me
     description: Passionate about the web, tooling, and building useful products. I enjoy working with Vue/Nuxt, TypeScript and Rust.
@@ -87,9 +88,9 @@ cta:
   description: Have a project, opportunity or question? Reach out or browse my projects.
   links:
     - label: See projects
-      to: "#projects"
+      to: '#projects'
       icon: i-lucide-rocket
     - label: About
-      to: "#about"
+      to: '#about'
       trailingIcon: i-lucide-user
       variant: subtle
