@@ -2,7 +2,18 @@
 const route = useRoute()
 
 const { data: page } = await useAsyncData('projects', () => queryCollection('projects').first())
-const { data: posts } = await useAsyncData(route.path, () => queryCollection('posts').all())
+// Fetch all posts, then sort client-side by end_date (fallback to date) in descending order for robust behavior
+const { data: _posts } = await useAsyncData(route.path, () => queryCollection('posts').all())
+
+// Ensure consistent ordering: prefer end_date, fallback to date
+const posts = computed(() => {
+  const arr = _posts.value || []
+  return arr.slice().sort((a, b) => {
+    const da = new Date(a.end_date || a.date).getTime()
+    const db = new Date(b.end_date || b.date).getTime()
+    return db - da
+  })
+})
 
 const title = page.value?.seo?.title || page.value?.title
 const description = page.value?.seo?.description || page.value?.description
@@ -26,7 +37,11 @@ defineOgImageComponent('Saas')
 
     <UPageBody>
       <UBlogPosts>
-        <div v-for="(post, index) in posts" :key="index" :class="[index === 0 && 'col-span-full']">
+        <div
+          v-for="(post, index) in posts"
+          :key="index"
+          :class="[index === 0 && 'col-span-full']"
+        >
           <UBlogPost
             :to="post.path"
             :title="post.title"
