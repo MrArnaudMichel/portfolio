@@ -27,10 +27,11 @@ type MinimalPostDetail = { date?: Date | string, start_date?: Date | string, end
 const formatDate = (d?: Date | string) => d ? new Date(d).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) : ''
 const dateDisplay = computed(() => {
   const p = post.value as unknown as MinimalPostDetail
-  const start = p?.start_date
-  const end = p?.end_date || p?.date
-  if (start && end) return `${formatDate(start)} – ${formatDate(end)}`
-  return formatDate(end || start)
+  const start = p?.start_date ?? p?.date
+  const hasEnd = !!p?.end_date
+  if (start && hasEnd) return `${formatDate(start)} – ${formatDate(p.end_date as Date | string)}`
+  if (start && !hasEnd) return `${formatDate(start)} – Ongoing`
+  return hasEnd ? formatDate(p.end_date as Date | string) : 'Ongoing'
 })
 
 if (post.value.image?.src) {
