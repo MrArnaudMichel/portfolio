@@ -3,14 +3,8 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig(
   {
-    modules: [
-      '@nuxt/eslint',
-      '@vueuse/nuxt',
-      // '@nuxt/image',
-      '@nuxt/ui-pro',
-      '@nuxt/content',
-      'nuxt-og-image'
-    ],
+    modules: ['@nuxt/eslint', '@vueuse/nuxt', // '@nuxt/image',
+    '@nuxt/ui-pro', '@nuxt/content', 'nuxt-og-image', 'nuxt-lucide-icons'],
 
     devtools: {
       enabled: true
