@@ -59,7 +59,10 @@ if (post.value.image?.src) {
         <span class="text-muted">&middot;</span>
         <time class="text-muted">{{ dateDisplay }}</time>
         <span class="text-muted">&middot;</span>
-        <UBadge v-if="post.main_language" variant="subtle">
+        <UBadge
+          v-if="post.main_language"
+          variant="subtle"
+        >
           {{ post.main_language }}
         </UBadge>
       </template>
@@ -86,7 +89,12 @@ if (post.value.image?.src) {
 
       <div class="flex flex-col gap-3 mt-4">
         <div class="flex items-center gap-2">
-          <UBadge v-if="post.role" variant="subtle" color="primary" size="lg">
+          <UBadge
+            v-if="post.role"
+            variant="subtle"
+            color="primary"
+            size="lg"
+          >
             {{ post.role }}
           </UBadge>
         </div>
@@ -99,7 +107,7 @@ if (post.value.image?.src) {
             icon="i-lucide:globe"
             size="sm"
           >
-            Voir le site
+            Website
           </UButton>
           <UButton
             v-if="post.git_repo"
@@ -110,7 +118,7 @@ if (post.value.image?.src) {
             icon="i-simple-icons:github"
             size="sm"
           >
-            Voir le dépôt
+            Git Repository
           </UButton>
         </div>
       </div>
