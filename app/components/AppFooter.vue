@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
 const repoUrl = 'https://github.com/MrArnaudMichel/portfolio2025'
 
@@ -59,8 +59,8 @@ function onSubmit() {
 
 <template>
   <USeparator
-    icon="i-lucide-chevron-down"
     class="h-px"
+    icon="i-lucide-chevron-down"
   />
 
   <UFooter :ui="{ top: 'border-b border-default' }">
@@ -74,16 +74,17 @@ function onSubmit() {
                   About this site
                 </h2>
                 <p class="text-sm text-muted">
-                  This is a personal portfolio. The website source code is available on GitHub. Check the repository here:
+                  This is a personal portfolio. The website source code is available on GitHub. Check the repository
+                  here:
                 </p>
                 <UButton
                   :to="repoUrl"
-                  target="_blank"
+                  class="ml-1 align-baseline"
                   color="primary"
-                  variant="subtle"
                   icon="i-simple-icons-github"
                   label="MrArnaudMichel/portfolio2025"
-                  class="ml-1 align-baseline"
+                  target="_blank"
+                  variant="subtle"
                 />
               </div>
             </div>
@@ -99,14 +100,14 @@ function onSubmit() {
     </template>
 
     <template #right>
-      <UColorModeButton />
+      <UColorModeButton/>
 
       <UButton
         :to="repoUrl"
-        target="_blank"
-        icon="i-simple-icons-github"
         aria-label="GitHub"
         color="neutral"
+        icon="i-simple-icons-github"
+        target="_blank"
         variant="ghost"
       />
     </template>

@@ -1,9 +1,9 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const route = useRoute()
 
-const { data: page } = await useAsyncData('projects', () => queryCollection('projects').first())
+const {data: page} = await useAsyncData('projects', () => queryCollection('projects').first())
 // Fetch all posts, then sort client-side with custom rules
-const { data: _posts } = await useAsyncData(route.path, () => queryCollection('posts').all())
+const {data: _posts} = await useAsyncData(route.path, () => queryCollection('posts').all())
 
 // Sorting rules:
 // 1) Projects without end_date are considered current and appear first
@@ -48,7 +48,11 @@ const posts = computed(() => {
   })
 })
 
-const formatDate = (d?: string | Date) => (d ? new Date(d).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) : '')
+const formatDate = (d?: string | Date) => (d ? new Date(d).toLocaleDateString('en', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric'
+}) : '')
 const dateRange = (p: MinimalPost) => {
   const start = p?.start_date ?? p?.date
   const hasEnd = !!p?.end_date
@@ -75,8 +79,8 @@ defineOgImageComponent('Saas')
 <template>
   <UContainer>
     <UPageHeader
-      v-bind="page"
       class="py-[50px]"
+      v-bind="page"
     />
 
     <UPageBody>
@@ -87,18 +91,18 @@ defineOgImageComponent('Saas')
           :class="[index === 0 && 'col-span-full']"
         >
           <UBlogPost
-            :to="post.path"
-            :title="post.title"
-            :description="post.description"
-            :image="post.image"
-            :date="dateRangeAny(post)"
             :authors="post.authors"
             :badge="post.badge"
+            :date="dateRangeAny(post)"
+            :description="post.description"
+            :image="post.image"
             :orientation="index === 0 ? 'horizontal' : 'vertical'"
-            variant="naked"
+            :title="post.title"
+            :to="post.path"
             :ui="{
               description: 'line-clamp-2'
             }"
+            variant="naked"
           />
         </div>
       </UBlogPosts>

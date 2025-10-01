@@ -1,12 +1,12 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const route = useRoute()
 
-const { data: post } = await useAsyncData(route.path, () => queryCollection('posts').path(route.path).first())
+const {data: post} = await useAsyncData(route.path, () => queryCollection('posts').path(route.path).first())
 if (!post.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Post not found', fatal: true })
+  throw createError({statusCode: 404, statusMessage: 'Post not found', fatal: true})
 }
 
-const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
+const {data: surround} = await useAsyncData(`${route.path}-surround`, () => {
   return queryCollectionItemSurroundings('posts', route.path, {
     fields: ['description']
   })
@@ -24,7 +24,11 @@ useSeoMeta({
 
 type MinimalPostDetail = { date?: Date | string, start_date?: Date | string, end_date?: Date | string }
 
-const formatDate = (d?: Date | string) => d ? new Date(d).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) : ''
+const formatDate = (d?: Date | string) => d ? new Date(d).toLocaleDateString('en', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric'
+}) : ''
 const dateDisplay = computed(() => {
   const p = post.value as unknown as MinimalPostDetail
   const start = p?.start_date ?? p?.date
@@ -48,8 +52,8 @@ if (post.value.image?.src) {
 <template>
   <UContainer v-if="post">
     <UPageHeader
-      :title="post.title"
       :description="post.description"
+      :title="post.title"
     >
       <template #headline>
         <UBadge
@@ -73,14 +77,14 @@ if (post.value.image?.src) {
           :key="index"
           :to="author.to"
           color="neutral"
-          variant="subtle"
-          target="_blank"
           size="sm"
+          target="_blank"
+          variant="subtle"
         >
           <UAvatar
-            v-bind="author.avatar"
             alt="Author avatar"
             size="2xs"
+            v-bind="author.avatar"
           />
 
           {{ author.name }}
@@ -91,9 +95,9 @@ if (post.value.image?.src) {
         <div class="flex items-center gap-2">
           <UBadge
             v-if="post.role"
-            variant="subtle"
             color="primary"
             size="lg"
+            variant="subtle"
           >
             {{ post.role }}
           </UBadge>
@@ -102,21 +106,21 @@ if (post.value.image?.src) {
           <UButton
             v-if="post.website"
             :to="post.website"
-            target="_blank"
             color="primary"
             icon="i-lucide:globe"
             size="sm"
+            target="_blank"
           >
             Website
           </UButton>
           <UButton
             v-if="post.git_repo"
             :to="post.git_repo"
-            target="_blank"
             color="neutral"
-            variant="subtle"
             icon="i-simple-icons:github"
             size="sm"
+            target="_blank"
+            variant="subtle"
           >
             Git Repository
           </UButton>
@@ -131,16 +135,16 @@ if (post.value.image?.src) {
           :value="post"
         />
 
-        <USeparator v-if="surround?.length" />
+        <USeparator v-if="surround?.length"/>
 
-        <UContentSurround :surround="surround" />
+        <UContentSurround :surround="surround"/>
       </UPageBody>
 
       <template
         v-if="post?.body?.toc?.links?.length"
         #right
       >
-        <UContentToc :links="post.body.toc.links" />
+        <UContentToc :links="post.body.toc.links"/>
       </template>
     </UPage>
   </UContainer>

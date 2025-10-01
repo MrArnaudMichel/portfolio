@@ -1,5 +1,5 @@
-<script setup lang="ts">
-const { data: page } = await useAsyncData('pricing', () => queryCollection('pricing').first())
+<script lang="ts" setup>
+const {data: page} = await useAsyncData('pricing', () => queryCollection('pricing').first())
 
 const title = page.value?.seo?.title || page.value?.title
 const description = page.value?.seo?.description || page.value?.description
@@ -30,21 +30,21 @@ const items = ref([
 <template>
   <div v-if="page">
     <UPageHero
-      :title="page.title"
       :description="page.description"
+      :title="page.title"
     >
       <template #links>
         <UTabs
           v-model="isYearly"
           :items="items"
-          color="neutral"
-          size="xs"
-          class="w-48"
           :ui="{
             list: 'ring ring-accented rounded-full',
             indicator: 'rounded-full',
             trigger: 'w-1/2'
           }"
+          class="w-48"
+          color="neutral"
+          size="xs"
         />
       </template>
     </UPageHero>
@@ -54,9 +54,9 @@ const items = ref([
         <UPricingPlan
           v-for="(plan, index) in page.plans"
           :key="index"
-          v-bind="plan"
-          :price="isYearly === '1' ? plan.price.year : plan.price.month"
           :billing-cycle="isYearly === '1' ? '/year' : '/month'"
+          :price="isYearly === '1' ? plan.price.year : plan.price.month"
+          v-bind="plan"
         />
       </UPricingPlans>
     </UContainer>
@@ -73,13 +73,13 @@ const items = ref([
     </UPageSection>
 
     <UPageSection
-      :title="page.faq.title"
       :description="page.faq.description"
+      :title="page.faq.title"
     >
       <UPageAccordion
         :items="page.faq.items"
-        multiple
         class="max-w-4xl mx-auto"
+        multiple
       />
     </UPageSection>
   </div>

@@ -1,16 +1,16 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 definePageMeta({
   layout: 'background'
 })
 
 const route = useRoute()
 
-const { data: page } = await useAsyncData(route.path, () => queryCollection('background').path(route.path).first())
+const {data: page} = await useAsyncData(route.path, () => queryCollection('background').path(route.path).first())
 if (!page.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+  throw createError({statusCode: 404, statusMessage: 'Page not found', fatal: true})
 }
 
-const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
+const {data: surround} = await useAsyncData(`${route.path}-surround`, () => {
   return queryCollectionItemSurroundings('background', route.path, {
     fields: ['description']
   })
@@ -32,8 +32,8 @@ defineOgImageComponent('Saas')
 <template>
   <UPage v-if="page">
     <UPageHeader
-      :title="page.title"
       :description="page.description"
+      :title="page.title"
     />
 
     <UPageBody>
@@ -42,16 +42,16 @@ defineOgImageComponent('Saas')
         :value="page"
       />
 
-      <USeparator v-if="surround?.length" />
+      <USeparator v-if="surround?.length"/>
 
-      <UContentSurround :surround="surround" />
+      <UContentSurround :surround="surround"/>
     </UPageBody>
 
     <template
       v-if="page?.body?.toc?.links?.length"
       #right
     >
-      <UContentToc :links="page.body.toc.links" />
+      <UContentToc :links="page.body.toc.links"/>
     </template>
   </UPage>
 </template>

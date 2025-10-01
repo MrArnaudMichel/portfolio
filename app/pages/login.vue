@@ -1,6 +1,6 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import * as z from 'zod'
-import type { FormSubmitEvent } from '@nuxt/ui'
+import type {FormSubmitEvent} from '@nuxt/ui'
 
 definePageMeta({
   layout: 'auth'
@@ -34,13 +34,13 @@ const providers = [{
   label: 'Google',
   icon: 'i-simple-icons-google',
   onClick: () => {
-    toast.add({ title: 'Google', description: 'Login with Google' })
+    toast.add({title: 'Google', description: 'Login with Google'})
   }
 }, {
   label: 'GitHub',
   icon: 'i-simple-icons-github',
   onClick: () => {
-    toast.add({ title: 'GitHub', description: 'Login with GitHub' })
+    toast.add({title: 'GitHub', description: 'Login with GitHub'})
   }
 }]
 
@@ -59,32 +59,39 @@ function onSubmit(payload: FormSubmitEvent<Schema>) {
 <template>
   <UAuthForm
     :fields="fields"
-    :schema="schema"
     :providers="providers"
-    title="Welcome back"
+    :schema="schema"
     icon="i-lucide-lock"
+    title="Welcome back"
     @submit="onSubmit"
   >
     <template #description>
-      Don't have an account? <ULink
-        to="/signup"
+      Don't have an account?
+      <ULink
         class="text-primary font-medium"
-      >Sign up</ULink>.
+        to="/signup"
+      >Sign up
+      </ULink>
+      .
     </template>
 
     <template #password-hint>
       <ULink
-        to="/"
         class="text-primary font-medium"
         tabindex="-1"
-      >Forgot password?</ULink>
+        to="/"
+      >Forgot password?
+      </ULink>
     </template>
 
     <template #footer>
-      By signing in, you agree to our <ULink
-        to="/"
+      By signing in, you agree to our
+      <ULink
         class="text-primary font-medium"
-      >Terms of Service</ULink>.
+        to="/"
+      >Terms of Service
+      </ULink>
+      .
     </template>
   </UAuthForm>
 </template>

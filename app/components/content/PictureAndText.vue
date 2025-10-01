@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import { UCard } from '#components'
+<script lang="ts" setup>
+import {UCard} from '#components'
 
 defineProps<{
   reverse?: boolean
@@ -11,10 +11,10 @@ defineProps<{
   <component :is="card ? UCard : 'div'">
     <div class="grid grid-cols-3 items-center w-full gap-x-8">
       <div :class="{ 'order-2': reverse }">
-        <slot name="image" />
+        <slot name="image"/>
       </div>
       <div class="col-span-2">
-        <slot />
+        <slot/>
       </div>
     </div>
   </component>

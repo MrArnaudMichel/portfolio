@@ -1,12 +1,12 @@
-<script setup lang="ts">
-import type { ContentNavigationItem } from '@nuxt/content'
+<script lang="ts" setup>
+import type {ContentNavigationItem} from '@nuxt/content'
 
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 </script>
 
 <template>
   <div>
-    <AppHeader />
+    <AppHeader/>
 
     <UMain>
       <UContainer>
@@ -14,7 +14,7 @@ const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
           <template #left>
             <UPageAside>
               <template #top>
-                <UContentSearchButton :collapsed="false" />
+                <UContentSearchButton :collapsed="false"/>
               </template>
 
               <UContentNavigation
@@ -24,11 +24,11 @@ const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
             </UPageAside>
           </template>
 
-          <slot />
+          <slot/>
         </UPage>
       </UContainer>
     </UMain>
 
-    <AppFooter />
+    <AppFooter/>
   </div>
 </template>

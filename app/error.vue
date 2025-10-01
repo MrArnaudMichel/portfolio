@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import type { NuxtError } from '#app'
+<script lang="ts" setup>
+import type {NuxtError} from '#app'
 
 defineProps({
   error: {
@@ -19,10 +19,10 @@ useSeoMeta({
   description: 'We are sorry but this page could not be found.'
 })
 
-const { data: navigation } = await useAsyncData('navigation', () => queryCollectionNavigation('background'), {
+const {data: navigation} = await useAsyncData('navigation', () => queryCollectionNavigation('background'), {
   transform: data => data.find(item => item.path === '/background')?.children || []
 })
-const { data: files } = useLazyAsyncData('search', () => queryCollectionSearchSections('background'), {
+const {data: files} = useLazyAsyncData('search', () => queryCollectionSearchSections('background'), {
   server: false
 })
 
@@ -39,28 +39,28 @@ const links = [{
 
 <template>
   <div>
-    <AppHeader />
+    <AppHeader/>
 
     <UMain>
       <UContainer>
         <UPage>
-          <UError :error="error" />
+          <UError :error="error"/>
         </UPage>
       </UContainer>
     </UMain>
 
-    <AppFooter />
+    <AppFooter/>
 
     <ClientOnly>
       <LazyUContentSearch
         :files="files"
-        shortcut="meta_k"
-        :navigation="navigation"
-        :links="links"
         :fuse="{ resultLimit: 42 }"
+        :links="links"
+        :navigation="navigation"
+        shortcut="meta_k"
       />
     </ClientOnly>
 
-    <UToaster />
+    <UToaster/>
   </div>
 </template>

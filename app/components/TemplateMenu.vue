@@ -1,7 +1,6 @@
 <template>
   <UDropdownMenu
     v-slot="{ open }"
-    :modal="false"
     :items="[{
       label: 'Starter',
       to: 'https://starter-template.nuxt.dev/'
@@ -24,19 +23,20 @@
       label: 'Chat',
       to: 'https://chat-template.nuxt.dev/'
     }]"
+    :modal="false"
     :ui="{ content: 'w-(--reka-dropdown-menu-trigger-width) min-w-0' }"
     size="xs"
   >
     <UButton
-      label="SaaS"
-      variant="subtle"
-      trailing-icon="i-lucide-chevron-down"
-      size="xs"
-      class="-mb-[6px] font-semibold rounded-full truncate"
       :class="[open && 'bg-primary/15']"
       :ui="{
         trailingIcon: ['transition-transform duration-200', open ? 'rotate-180' : undefined].filter(Boolean).join(' ')
       }"
+      class="-mb-[6px] font-semibold rounded-full truncate"
+      label="SaaS"
+      size="xs"
+      trailing-icon="i-lucide-chevron-down"
+      variant="subtle"
     />
   </UDropdownMenu>
 </template>

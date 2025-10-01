@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 definePageMeta({
   layout: 'background'
 })
@@ -8,12 +8,12 @@ const route = useRoute()
 // Map /career/... to the corresponding /docs/... path in content
 const docsPath = computed(() => route.path.replace(/^\/backgroundr/, '/background'))
 
-const { data: page } = await useAsyncData(docsPath.value, () => queryCollection('background').path(docsPath.value).first())
+const {data: page} = await useAsyncData(docsPath.value, () => queryCollection('background').path(docsPath.value).first())
 if (!page.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+  throw createError({statusCode: 404, statusMessage: 'Page not found', fatal: true})
 }
 
-const { data: surround } = await useAsyncData(`${docsPath.value}-surround`, () => {
+const {data: surround} = await useAsyncData(`${docsPath.value}-surround`, () => {
   return queryCollectionItemSurroundings('background', docsPath.value, {
     fields: ['description']
   })
@@ -35,8 +35,8 @@ defineOgImageComponent('Saas')
 <template>
   <UPage v-if="page">
     <UPageHeader
-      :title="page.title"
       :description="page.description"
+      :title="page.title"
     />
 
     <UPageBody>
@@ -45,16 +45,16 @@ defineOgImageComponent('Saas')
         :value="page"
       />
 
-      <USeparator v-if="surround?.length" />
+      <USeparator v-if="surround?.length"/>
 
-      <UContentSurround :surround="surround" />
+      <UContentSurround :surround="surround"/>
     </UPageBody>
 
     <template
       v-if="page?.body?.toc?.links?.length"
       #right
     >
-      <UContentToc :links="page.body.toc.links" />
+      <UContentToc :links="page.body.toc.links"/>
     </template>
   </UPage>
 </template>

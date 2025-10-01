@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 const route = useRoute()
 
 const items = computed(() => [{
@@ -42,23 +42,23 @@ const items = computed(() => [{
     />
 
     <template #right>
-      <UColorModeButton />
+      <UColorModeButton/>
 
       <UButton
-        label="My GitHub"
-        icon="i-simple-icons-github"
-        color="neutral"
-        trailing-icon="i-lucide-arrow-right"
         class="hidden lg:inline-flex"
+        color="neutral"
+        icon="i-simple-icons-github"
+        label="My GitHub"
         to="https://github.com/MrArnaudMichel"
+        trailing-icon="i-lucide-arrow-right"
       />
     </template>
 
     <template #body>
       <UNavigationMenu
         :items="items"
-        orientation="vertical"
         class="-mx-2.5"
+        orientation="vertical"
       />
     </template>
   </UHeader>
