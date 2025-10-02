@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 const route = useRoute()
 
-const {data: post} = await useAsyncData(route.path, () => queryCollection('posts').path(route.path).first())
+const { data: post } = await useAsyncData(route.path, () => queryCollection('posts').path(route.path).first())
 if (!post.value) {
-  throw createError({statusCode: 404, statusMessage: 'Post not found', fatal: true})
+  throw createError({ statusCode: 404, statusMessage: 'Post not found', fatal: true })
 }
 
-const {data: surround} = await useAsyncData(`${route.path}-surround`, () => {
+const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
   return queryCollectionItemSurroundings('posts', route.path, {
     fields: ['description']
   })
@@ -24,11 +24,13 @@ useSeoMeta({
 
 type MinimalPostDetail = { date?: Date | string, start_date?: Date | string, end_date?: Date | string }
 
-const formatDate = (d?: Date | string) => d ? new Date(d).toLocaleDateString('en', {
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric'
-}) : ''
+const formatDate = (d?: Date | string) => d
+  ? new Date(d).toLocaleDateString('en', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    })
+  : ''
 const dateDisplay = computed(() => {
   const p = post.value as unknown as MinimalPostDetail
   const start = p?.start_date ?? p?.date
@@ -135,16 +137,16 @@ if (post.value.image?.src) {
           :value="post"
         />
 
-        <USeparator v-if="surround?.length"/>
+        <USeparator v-if="surround?.length" />
 
-        <UContentSurround :surround="surround"/>
+        <UContentSurround :surround="surround" />
       </UPageBody>
 
       <template
         v-if="post?.body?.toc?.links?.length"
         #right
       >
-        <UContentToc :links="post.body.toc.links"/>
+        <UContentToc :links="post.body.toc.links" />
       </template>
     </UPage>
   </UContainer>

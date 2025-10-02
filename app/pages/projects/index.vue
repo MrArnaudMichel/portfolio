@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 const route = useRoute()
 
-const {data: page} = await useAsyncData('projects', () => queryCollection('projects').first())
+const { data: page } = await useAsyncData('projects', () => queryCollection('projects').first())
 // Fetch all posts, then sort client-side with custom rules
-const {data: _posts} = await useAsyncData(route.path, () => queryCollection('posts').all())
+const { data: _posts } = await useAsyncData(route.path, () => queryCollection('posts').all())
 
 // Sorting rules:
 // 1) Projects without end_date are considered current and appear first
@@ -17,8 +17,8 @@ type MinimalPost = {
   title?: string
   description?: string
   image?: unknown
-  authors?: unknown
-  badge?: unknown
+  authors?: unknown[]
+  badge?: string
 }
 
 const posts = computed(() => {
@@ -48,11 +48,13 @@ const posts = computed(() => {
   })
 })
 
-const formatDate = (d?: string | Date) => (d ? new Date(d).toLocaleDateString('en', {
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric'
-}) : '')
+const formatDate = (d?: string | Date) => (d
+  ? new Date(d).toLocaleDateString('en', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    })
+  : '')
 const dateRange = (p: MinimalPost) => {
   const start = p?.start_date ?? p?.date
   const hasEnd = !!p?.end_date
@@ -102,7 +104,7 @@ defineOgImageComponent('Saas')
             :ui="{
               description: 'line-clamp-2'
             }"
-            variant="naked"
+            variant="ghost"
           />
         </div>
       </UBlogPosts>
