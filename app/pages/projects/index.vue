@@ -1,13 +1,9 @@
 <script lang="ts" setup>
 const route = useRoute()
 
-const {data: page} = await useAsyncData('projects', () => queryCollection('projects').first())
+const { data: page } = await useAsyncData('projects', () => queryCollection('projects').first())
 // Fetch all posts, then sort client-side with custom rules
-const {data: _posts} = await useAsyncData(route.path, () => queryCollection('posts').all())
-
-// Sorting rules:
-// 1) Projects without end_date are considered current and appear first
-// 2) Second criterion is start_date (desc). Fallbacks apply when missing.
+const { data: _posts } = await useAsyncData(route.path, () => queryCollection('posts').all())
 
 type MinimalPost = {
   date?: string | Date
@@ -36,23 +32,23 @@ const posts = computed(() => {
     const bCurrent = !b?.end_date
     if (aCurrent !== bCurrent) return aCurrent ? -1 : 1
 
-    // Both current or both not current: sort by start_date desc (fallback to date)
-    const aStart = toTime(a?.start_date ?? a?.date)
-    const bStart = toTime(b?.start_date ?? b?.date)
-    if (bStart !== aStart) return bStart - aStart
-
-    // As a final tiebreaker, sort by end_date desc (fallback to date)
     const aEnd = toTime(a?.end_date ?? a?.date)
     const bEnd = toTime(b?.end_date ?? b?.date)
-    return bEnd - aEnd
+    if (bEnd !== aEnd) return bEnd - aEnd
+
+    const aStart = toTime(a?.start_date ?? a?.date)
+    const bStart = toTime(b?.start_date ?? b?.date)
+    return bStart - aStart
   })
 })
 
-const formatDate = (d?: string | Date) => (d ? new Date(d).toLocaleDateString('en', {
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric'
-}) : '')
+const formatDate = (d?: string | Date) => (d
+  ? new Date(d).toLocaleDateString('en', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    })
+  : '')
 const dateRange = (p: MinimalPost) => {
   const start = p?.start_date ?? p?.date
   const hasEnd = !!p?.end_date
