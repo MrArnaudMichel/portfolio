@@ -1,5 +1,15 @@
 <script lang="ts" setup>
-const {data: page} = await useAsyncData('index', () => queryCollection('index').first())
+const { data: page } = await useAsyncData('index', () =>
+  queryCollection('index').first()
+)
+
+// Récupération du changelog (même logique que ta page changelog)
+const { data: changelog } = await useAsyncData('changelog', () =>
+  queryCollection('changelog').first()
+)
+const { data: versions } = await useAsyncData('versions', () =>
+  queryCollection('versions').order('date', 'DESC').all()
+)
 
 const title = page.value?.seo?.title || page.value?.title
 const description = page.value?.seo?.description || page.value?.description
@@ -15,18 +25,22 @@ useSeoMeta({
 
 <template>
   <div v-if="page">
+    <!-- HERO -->
     <UPageHero
       :description="page.description"
       :links="page.hero.links"
       :title="page.title"
-      class="main-title">
+      class="main-title"
+    >
       <template #top>
         <div
-          class="absolute rounded-full dark:bg-primary blur-[300px] size-60 sm:size-80 transform -translate-x-1/2 left-1/2 -translate-y-80"/>
-        <LazyStarsBg/>
+          class="absolute rounded-full dark:bg-primary blur-[300px] size-60 sm:size-80 transform -translate-x-1/2 left-1/2 -translate-y-80"
+        />
+        <LazyStarsBg />
       </template>
     </UPageHero>
 
+    <!-- SECTIONS DYNAMIQUES -->
     <UPageSection
       v-for="(section, index) in page.sections"
       :key="index"
@@ -36,9 +50,10 @@ useSeoMeta({
       :reverse="section.reverse"
       :title="section.title"
     >
-      <ImagePlaceholder/>
+      <ImagePlaceholder />
     </UPageSection>
 
+    <!-- FEATURES -->
     <UPageSection
       :description="page.features.description"
       :title="page.features.title"
@@ -53,6 +68,7 @@ useSeoMeta({
       </UPageGrid>
     </UPageSection>
 
+    <!-- TESTIMONIALS -->
     <UPageSection
       id="testimonials"
       :description="page.testimonials.description"
@@ -75,6 +91,27 @@ useSeoMeta({
           </template>
         </UPageCard>
       </UPageColumns>
+    </UPageSection>
+
+    <!-- 🆕 SECTION CHANGELOG -->
+    <UPageSection
+      v-if="changelog"
+      id="changelog"
+      class="py-[50px]"
+      :title="changelog.title"
+      :description="changelog.description"
+    >
+      <UChangelogVersions>
+        <UChangelogVersion
+          v-for="(version, index) in versions"
+          :key="index"
+          v-bind="version"
+        >
+          <template #body>
+            <ContentRenderer :value="version.body" />
+          </template>
+        </UChangelogVersion>
+      </UChangelogVersions>
     </UPageSection>
   </div>
 </template>

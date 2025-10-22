@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-
 const repoUrl = 'https://github.com/MrArnaudMichel/portfolio2025'
 
 const columns = [{
@@ -41,20 +40,6 @@ const columns = [{
     target: '_blank'
   }]
 }]
-
-const toast = useToast()
-
-const email = ref('')
-const loading = ref(false)
-
-function onSubmit() {
-  loading.value = true
-
-  toast.add({
-    title: 'Subscribed!',
-    description: 'You\'ve been subscribed to our newsletter.'
-  })
-}
 </script>
 
 <template>
@@ -100,7 +85,7 @@ function onSubmit() {
     </template>
 
     <template #right>
-      <UColorModeButton/>
+      <UColorModeButton />
 
       <UButton
         :to="repoUrl"
