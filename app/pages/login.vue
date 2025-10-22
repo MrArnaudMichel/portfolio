@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import * as z from 'zod'
-import type {FormSubmitEvent} from '@nuxt/ui'
+import type { FormSubmitEvent } from '@nuxt/ui'
 
 definePageMeta({
   layout: 'auth'
@@ -34,13 +34,13 @@ const providers = [{
   label: 'Google',
   icon: 'i-simple-icons-google',
   onClick: () => {
-    toast.add({title: 'Google', description: 'Login with Google'})
+    toast.add({ title: 'Google', description: 'Login with Google' })
   }
 }, {
   label: 'GitHub',
   icon: 'i-simple-icons-github',
   onClick: () => {
-    toast.add({title: 'GitHub', description: 'Login with GitHub'})
+    toast.add({ title: 'GitHub', description: 'Login with GitHub' })
   }
 }]
 

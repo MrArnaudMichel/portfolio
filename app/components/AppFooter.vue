@@ -79,7 +79,7 @@ function onSubmit() {
                 </p>
                 <UButton
                   :to="repoUrl"
-                  class="ml-1 align-baseline"
+                  class="align-baseline"
                   color="primary"
                   icon="i-simple-icons-github"
                   label="MrArnaudMichel/portfolio2025"
