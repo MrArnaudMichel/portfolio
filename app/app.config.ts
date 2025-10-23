@@ -1,7 +1,7 @@
 export default defineAppConfig({
   content: {
     markdown: {
-      image: {sizes: false} // désactive l'intégration nuxt-img
+      image: { sizes: false }
     }
   },
   ui: {

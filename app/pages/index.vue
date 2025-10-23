@@ -97,21 +97,22 @@ useSeoMeta({
     <UPageSection
       v-if="changelog"
       id="changelog"
-      class="py-[50px]"
       :title="changelog.title"
       :description="changelog.description"
     >
-      <UChangelogVersions>
-        <UChangelogVersion
-          v-for="(version, index) in versions"
-          :key="index"
-          v-bind="version"
-        >
-          <template #body>
-            <ContentRenderer :value="version.body" />
-          </template>
-        </UChangelogVersion>
-      </UChangelogVersions>
+      <UPageBody>
+        <UChangelogVersions>
+          <UChangelogVersion
+            v-for="(version, index) in versions"
+            :key="index"
+            v-bind="version"
+          >
+            <template #body>
+              <ContentRenderer :value="version.body"/>
+            </template>
+          </UChangelogVersion>
+        </UChangelogVersions>
+      </UPageBody>
     </UPageSection>
   </div>
 </template>

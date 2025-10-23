@@ -25,8 +25,7 @@ defineOgImageComponent('Saas')
     />
 
     <UPageBody>
-      <UChangelogVersions
-      >
+      <UChangelogVersions>
         <UChangelogVersion
           v-for="(version, index) in versions"
           :key="index"
