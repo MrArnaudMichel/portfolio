@@ -18,7 +18,7 @@ export default defineNuxtConfig(
 
     routeRules: {
       '/background': {
-        redirect: '/background/schooling',
+        redirect: '/background/schooling/utbm',
         prerender: false
       }
     },
