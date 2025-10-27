@@ -1,5 +1,5 @@
 title: Welcome to my portfolio!
-description: I'm Arnaud, a French computer science engineering student. I build web apps, tools, and open‑source projects.
+description: I'm Arnaud, a French computer science engineering student. I build apps, tools, and open‑source projects.
 seo:
   title: Arnaud's Portfolio
   description: Arnaud's personal portfolio. Projects, skills, and contact. Built with Nuxt and Nuxt UI.
@@ -9,7 +9,7 @@ hero:
     - label: Explore projects
       icon: i-lucide-arrow-right
       trailing: true
-      to: '#projects'
+      to: '/projects'
       size: xl
       color: primary
     - label: About
