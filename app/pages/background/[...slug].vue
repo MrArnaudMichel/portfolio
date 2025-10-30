@@ -5,15 +5,23 @@ definePageMeta({
 
 const route = useRoute()
 
-// Map /career/... to the corresponding /docs/... path in content
-const docsPath = computed(() => route.path.replace(/^\/backgroundr/, '/background'))
+// Map /career/... to the corresponding background path in content
+const docsPath = computed(() => {
+  // If visiting /career or /career/..., map to the background career folder
+  if (route.path.startsWith('/career')) {
+    const rest = route.path.replace(/^\/career/, '') || ''
+    return `/background/2.career${rest}`
+  }
+  // Otherwise, keep the route path as-is for background pages
+  return route.path
+})
 
-const {data: page} = await useAsyncData(docsPath.value, () => queryCollection('background').path(docsPath.value).first())
+const { data: page } = await useAsyncData(docsPath.value, () => queryCollection('background').path(docsPath.value).first())
 if (!page.value) {
-  throw createError({statusCode: 404, statusMessage: 'Page not found', fatal: true})
+  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
-const {data: surround} = await useAsyncData(`${docsPath.value}-surround`, () => {
+const { data: surround } = await useAsyncData(`${docsPath.value}-surround`, () => {
   return queryCollectionItemSurroundings('background', docsPath.value, {
     fields: ['description']
   })

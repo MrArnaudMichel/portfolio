@@ -93,7 +93,6 @@ useSeoMeta({
       </UPageColumns>
     </UPageSection>
 
-    <!-- 🆕 SECTION CHANGELOG -->
     <UPageSection
       v-if="changelog"
       id="changelog"
@@ -112,6 +111,16 @@ useSeoMeta({
             </template>
           </UChangelogVersion>
         </UChangelogVersions>
+        <div class="mt-6 flex justify-end">
+          <UButton
+            icon="i-lucide-briefcase"
+            color="primary"
+            trailing
+            :to="'/background'"
+          >
+            View full career
+          </UButton>
+        </div>
       </UPageBody>
     </UPageSection>
   </div>

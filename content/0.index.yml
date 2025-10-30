@@ -88,7 +88,7 @@ cta:
   description: Have a project, opportunity or question? Reach out or browse my projects.
   links:
     - label: See projects
-      to: '#projects'
+      to: '/projects'
       icon: i-lucide-rocket
     - label: About
       to: '#about'
