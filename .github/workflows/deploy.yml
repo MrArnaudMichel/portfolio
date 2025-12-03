@@ -5,7 +5,7 @@ on:
     branches: ["main"]
 
 permissions:
-  contents: write # Indispensable pour pouvoir push sur la branche gh-pages
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -26,8 +26,13 @@ jobs:
       - name: Build static site
         run: npm run generate
 
+      - name: Fix 404 and NoJekyll
+        run: |
+          cp .output/public/index.html .output/public/404.html
+          touch .output/public/.nojekyll
+
       - name: Deploy to gh-pages branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages # La branche cible
-          folder: .output/public # Le dossier à déployer (basé sur ton fichier original)
+          branch: gh-pages
+          folder: .output/public
