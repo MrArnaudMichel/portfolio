@@ -9,12 +9,16 @@ export default defineNuxtConfig(
       '@nuxt/ui',
       '@nuxt/content',
       'nuxt-og-image',
-      'nuxt-lucide-icons',
-      '@nuxt/image'
+      'nuxt-lucide-icons'
     ],
 
     devtools: {
       enabled: true
+    },
+
+    app: {
+      baseURL: '/',
+      buildAssetsDir: '_nuxt/'
     },
 
     css: ['~/assets/css/main.css'],
@@ -27,11 +31,6 @@ export default defineNuxtConfig(
     },
 
     compatibilityDate: '2025-07-15',
-
-    app: {
-      baseURL: '/',
-      buildAssetsDir: '_nuxt/'
-    },
 
     nitro: {
       preset: 'github-pages',
@@ -53,6 +52,6 @@ export default defineNuxtConfig(
           braceStyle: '1tbs'
         }
       }
-    }
+    },
   }
 )

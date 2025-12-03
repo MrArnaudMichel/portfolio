@@ -53,14 +53,13 @@ useSeoMeta({
       :reverse="section.reverse"
       :title="section.title"
     >
-      <nuxt-img
+      <img
         v-if="section.image"
         :src="section.image"
         :alt="section.title"
         class="rounded-lg shadow-lg"
         width="800"
         height="450"
-        :sizes="`(max-width: 768px) 100vw, 800px`"
       />
     </UPageSection>
 
