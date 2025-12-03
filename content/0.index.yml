@@ -1,8 +1,8 @@
 title: Welcome to my portfolio!
-description: I'm Arnaud, a French computer science engineering student. I build apps, tools, and open‑source projects.
+description: I'm Arnaud, a Computer Engineering student at UTBM with a solid foundation in software development and system optimization. Proficient in C, Rust, Python, and Java, I'm passionate about using technology to solve complex problems.
 seo:
-  title: Arnaud's Portfolio
-  description: Arnaud's personal portfolio. Projects, skills, and contact. Built with Nuxt and Nuxt UI.
+  title: Arnaud Michel — Computer Engineering Student
+  description: Computer Engineering student at UTBM. Specialized in software development, system optimization, and full‑stack web development. Proficient in C, Rust, Python, Java, and modern web technologies.
 navigation: false
 hero:
   links:
@@ -20,77 +20,75 @@ hero:
       to: '#about'
 sections:
   - title: About me
-    description: Passionate about the web, tooling, and building useful products. I enjoy working with Vue/Nuxt, TypeScript and Rust.
+    description: Computer Engineering student at UTBM with strong foundations in software development, system optimization, and technical project management. I combine low‑level programming expertise with modern web development skills to design efficient and scalable solutions.
     id: about
     orientation: horizontal
+    image: /images/index/ski.webp
     features:
       - name: Engineering student
-        description: Strong interest in software architecture and UX.
+        description: Studying Computer Engineering at UTBM with focus on software architecture, algorithms, and system optimization.
         icon: i-lucide-graduation-cap
-      - name: Web & Full‑Stack
-        description: Vue/Nuxt frontend, Node APIs, databases and CI/CD integrations.
+      - name: Full‑Stack developer
+        description: Experience with Angular, Node.js, Express, MongoDB, and building complete applications from design to deployment.
         icon: i-lucide-code-2
-      - name: Open‑source
-        description: I publish projects and learn by sharing.
-        icon: i-lucide-git-branch
+      - name: Systems & Performance
+        description: Proficient in C, C++, and Rust for high‑performance applications and embedded systems.
+        icon: i-lucide-cpu
   - title: Skills
-    description: A snapshot of technologies I use day‑to‑day.
+    description: Technologies and languages I work with regularly across different domains.
     id: skills
     orientation: horizontal
+    reverse: true
+    image: /images/index/system.jpg
     features:
-      - name: TypeScript
-        description: Strong typing for reliable codebases.
-        icon: i-simple-icons-typescript
-      - name: Vue & Nuxt
-        description: Modern, fast and accessible interfaces.
-        icon: i-simple-icons-vuedotjs
-      - name: Rust
-        description: Performance and reliability for tools and services.
+      - name: C, C++ & Rust
+        description: Low‑level programming for performance‑critical applications and embedded systems.
         icon: i-simple-icons-rust
+      - name: Java & Python
+        description: Object‑oriented design, data analysis, and backend development.
+        icon: i-simple-icons-python
+      - name: Web & Databases
+        description: Angular, Node.js, Express, MongoDB, SQL/PLSQL for full‑stack applications.
+        icon: i-simple-icons-angular
   - title: Projects
     description: The five most recent projects I worked on, with screenshots, description and main language. Click through for details.
     id: projects
     orientation: horizontal
-    reverse: true
+    image: /images/index/overview.png
     features:
       - name: Latest work
         description: Curated selection of my recent projects.
         icon: i-lucide-layout-grid
 features:
   title: Toolbox
-  description: I value simple, fast and well‑documented tools.
+  description: Technologies and methodologies I use to build efficient and maintainable solutions.
   items:
-    - title: TypeScript
-      description: A standard for maintainable front/back applications.
-      icon: i-simple-icons-typescript
-    - title: Nuxt UI
-      description: Accessible components for speed without sacrificing quality.
-      icon: i-lucide-layout
+    - title: C & C++
+      description: Systems programming and performance optimization.
+      icon: i-simple-icons-cplusplus
     - title: Rust
-      description: Fast and safe binaries.
+      description: Memory‑safe, high‑performance applications.
       icon: i-simple-icons-rust
-    - title: GitHub Actions
-      description: CI/CD to test and deploy automatically.
-      icon: i-lucide-github
-    - title: Vite
-      description: Ultra‑fast build tool for daily development.
-      icon: i-simple-icons-vite
-    - title: Docker
-      description: Reproducible and portable environments.
-      icon: i-lucide-box
-testimonials:
-  headline: Testimonials
-  title: Coming soon
-  description: Feedback will be added later.
-  items: []
+    - title: Python & Java
+      description: Backend development, data processing, and OOP design.
+      icon: i-simple-icons-python
+    - title: Angular & Node.js
+      description: Full‑stack web development with modern frameworks.
+      icon: i-simple-icons-angular
+    - title: SQL & MongoDB
+      description: Relational and NoSQL databases for scalable data management.
+      icon: i-simple-icons-mongodb
+    - title: Agile Methods
+      description: Scrum and Kanban for collaborative project management.
+      icon: i-lucide-users
 cta:
   title: Let's work together
-  description: Have a project, opportunity or question? Reach out or browse my projects.
+  description: Interested in collaboration or have questions about my work? Feel free to explore my projects or reach out.
   links:
     - label: See projects
       to: '/projects'
       icon: i-lucide-rocket
-    - label: About
-      to: '#about'
-      trailingIcon: i-lucide-user
+    - label: View career
+      to: '/changelog'
+      trailingIcon: i-lucide-briefcase
       variant: subtle

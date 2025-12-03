@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const repoUrl = 'https://github.com/MrArnaudMichel/portfolio2025'
+const repoUrl = 'https://github.com/MrArnaudMichel/portfolio'
 
 const columns = [{
   label: 'Docs',
@@ -67,7 +67,7 @@ const columns = [{
                   class="align-baseline"
                   color="primary"
                   icon="i-simple-icons-github"
-                  label="MrArnaudMichel/portfolio2025"
+                  label="MrArnaudMichel/portfolio"
                   target="_blank"
                   variant="subtle"
                 />

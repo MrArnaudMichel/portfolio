@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+
+import OgImageSaas from "~/components/OgImage/OgImageSaas.vue";
+
 const { data: page } = await useAsyncData('index', () =>
   queryCollection('index').first()
 )
@@ -50,7 +53,15 @@ useSeoMeta({
       :reverse="section.reverse"
       :title="section.title"
     >
-      <ImagePlaceholder />
+      <nuxt-img
+        v-if="section.image"
+        :src="section.image"
+        :alt="section.title"
+        class="rounded-lg shadow-lg"
+        width="800"
+        height="450"
+        :sizes="`(max-width: 768px) 100vw, 800px`"
+      />
     </UPageSection>
 
     <!-- FEATURES -->
@@ -66,31 +77,6 @@ useSeoMeta({
           v-bind="item"
         />
       </UPageGrid>
-    </UPageSection>
-
-    <!-- TESTIMONIALS -->
-    <UPageSection
-      id="testimonials"
-      :description="page.testimonials.description"
-      :headline="page.testimonials.headline"
-      :title="page.testimonials.title"
-    >
-      <UPageColumns class="xl:columns-4">
-        <UPageCard
-          v-for="(testimonial, index) in page.testimonials.items"
-          :key="index"
-          :description="testimonial.quote"
-          :ui="{ description: 'before:content-[open-quote] after:content-[close-quote]' }"
-          variant="subtle"
-        >
-          <template #footer>
-            <UUser
-              size="lg"
-              v-bind="testimonial.user"
-            />
-          </template>
-        </UPageCard>
-      </UPageColumns>
     </UPageSection>
 
     <UPageSection
