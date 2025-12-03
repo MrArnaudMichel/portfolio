@@ -1,45 +1,33 @@
-name: Deploy Nuxt 4 to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main  # Branche principale de ton code
+    branches: ["main"]
+
+permissions:
+  contents: write # Indispensable pour pouvoir push sur la branche gh-pages
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # 1. Checkout du repo
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      # 2. Setup Node.js (pnpm)
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
+          cache: 'npm'
 
-      # 3. Install pnpm
-      - name: Install pnpm
-        run: npm install -g pnpm
-
-      # 4. Install dependencies
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci
 
-      # 5. Build Nuxt
-      - name: Build Nuxt
-        run: pnpm build
+      - name: Build static site
+        run: npm run generate
 
-      # 6. Generate static site
-      - name: Generate static site
-        run: pnpm run generate
-
-      # 7. Deploy to gh-pages
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v5
+      - name: Deploy to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .output/public
-          publish_branch: gh-pages
+          branch: gh-pages # La branche cible
+          folder: .output/public # Le dossier à déployer (basé sur ton fichier original)
