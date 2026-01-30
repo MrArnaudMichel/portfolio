@@ -19,8 +19,8 @@ useHead({
 
 useSeoMeta({
   titleTemplate: '%s - Portfolio',
-  ogImage: '/main_image.png',
-  twitterImage: '/main_image.png',
+  ogImage: 'https://arnaudmichel.fr/main_image.png',
+  twitterImage: 'https://arnaudmichel.fr/main_image.png',
   twitterCard: 'summary_large_image'
 })
 
