@@ -7,7 +7,7 @@
     <rect width="1024" height="1024" fill="#EDE7DE"/>
 
     <!-- Logo centré automatiquement -->
-    <svg x="128" y="128" width="768" height="768"
+    <svg x="128" y="96" width="768" height="768"
          viewBox="102.41 0 849 763.88"
          preserveAspectRatio="xMidYMid meet">
 
