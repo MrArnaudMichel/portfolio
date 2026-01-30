@@ -10,7 +10,7 @@ useHead({
     {key: 'theme-color', name: 'theme-color', content: color}
   ],
   link: [
-    {rel: 'icon', href: '/logo.svg'}
+    {rel: 'icon', href: '/logo_without_bg.svg'}
   ],
   htmlAttrs: {
     lang: 'en'
