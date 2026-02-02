@@ -1,0 +1,1 @@
+import{bp as s,bh as p,a as u}from"#entry";function r(o={}){const t=s(),a=p().path||"/";if(t.payload.path===a){const n=u(!1);n.value=!0}}function c(o,t={},e={}){return r({...e})}export{r as a,c as d};
