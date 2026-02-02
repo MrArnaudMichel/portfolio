@@ -51,14 +51,9 @@ sections:
         description: Angular, Node.js, Express, MongoDB, SQL/PLSQL for full‑stack applications.
         icon: i-simple-icons-angular
   - title: Projects
-    description: The five most recent projects I worked on, with screenshots, description and main language. Click through for details.
+    description: A curated selection of my recent work — from systems programming to web applications. Each project showcases different skills and technologies.
     id: projects
     orientation: horizontal
-    image: /images/index/overview.png
-    features:
-      - name: Latest work
-        description: Curated selection of my recent projects.
-        icon: i-lucide-layout-grid
 features:
   title: Toolbox
   description: Technologies and methodologies I use to build efficient and maintainable solutions.

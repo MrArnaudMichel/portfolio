@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-
-import OgImageSaas from "~/components/OgImage/OgImageSaas.vue";
-
 const { data: page } = await useAsyncData('index', () =>
   queryCollection('index').first()
 )
@@ -44,24 +41,36 @@ useSeoMeta({
     </UPageHero>
 
     <!-- SECTIONS DYNAMIQUES -->
-    <UPageSection
-      v-for="(section, index) in page.sections"
-      :key="index"
-      :description="section.description"
-      :features="section.features"
-      :orientation="section.orientation"
-      :reverse="section.reverse"
-      :title="section.title"
-    >
-      <img
-        v-if="section.image"
-        :src="section.image"
-        :alt="section.title"
-        class="rounded-lg shadow-lg"
-        width="800"
-        height="450"
-      />
-    </UPageSection>
+    <template v-for="(section, index) in page.sections" :key="index">
+      <!-- Section Projects personnalisée -->
+      <UPageSection
+        v-if="section.id === 'projects'"
+        :id="section.id"
+        :description="section.description"
+        :title="section.title"
+      >
+        <ProjectsShowcase />
+      </UPageSection>
+
+      <!-- Sections standard -->
+      <UPageSection
+        v-else
+        :description="section.description"
+        :features="section.features"
+        :orientation="section.orientation"
+        :reverse="section.reverse"
+        :title="section.title"
+      >
+        <img
+          v-if="section.image"
+          :src="section.image"
+          :alt="section.title"
+          class="rounded-lg shadow-lg"
+          width="800"
+          height="450"
+        />
+      </UPageSection>
+    </template>
 
     <!-- FEATURES -->
     <UPageSection
@@ -92,7 +101,7 @@ useSeoMeta({
             v-bind="version"
           >
             <template #body>
-              <ContentRenderer :value="version.body"/>
+              <ContentRenderer :value="version.body" />
             </template>
           </UChangelogVersion>
         </UChangelogVersions>
