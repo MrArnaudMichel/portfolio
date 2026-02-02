@@ -95,16 +95,6 @@ if (post.value.image?.src) {
 
       <div class="flex flex-col gap-3 mt-4">
         <div class="flex items-center gap-2">
-          <UBadge
-            v-if="post.role"
-            color="primary"
-            size="lg"
-            variant="subtle"
-          >
-            {{ post.role }}
-          </UBadge>
-        </div>
-        <div class="flex items-center gap-2">
           <UButton
             v-if="post.website"
             :to="post.website"
