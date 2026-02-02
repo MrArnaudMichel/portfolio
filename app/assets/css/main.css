@@ -69,6 +69,11 @@ h1, h2, h3 {
   font-family: 'OakSans', sans-serif;
 }
 
+::selection {
+  background-color: var(--color-primary);
+  color: var(--ui-bg);
+}
+
 
 @font-face {
   font-family: 'Arcon Bold';
