@@ -36,7 +36,7 @@ export default defineNuxtConfig(
       preset: 'github-pages',
       prerender: {
         crawlLinks: true,
-        routes: ['/']
+        routes: ['/', '/projects']
       }
     },
     vite: {
@@ -52,6 +52,6 @@ export default defineNuxtConfig(
           braceStyle: '1tbs'
         }
       }
-    },
+    }
   }
 )

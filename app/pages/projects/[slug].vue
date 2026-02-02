@@ -1,16 +1,22 @@
 <script lang="ts" setup>
 const route = useRoute()
 
-const { data: post } = await useAsyncData(route.path, () => queryCollection('posts').path(route.path).first())
+const { data: post } = await useAsyncData(
+  `post-${route.params.slug}`,
+  () => queryCollection('posts').path(route.path).first(),
+  { watch: [() => route.params.slug] }
+)
 if (!post.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Post not found', fatal: true })
+  throw createError({ statusCode: 404, statusMessage: 'Project not found', fatal: true })
 }
 
-const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
-  return queryCollectionItemSurroundings('posts', route.path, {
+const { data: surround } = await useAsyncData(
+  `surround-${route.params.slug}`,
+  () => queryCollectionItemSurroundings('posts', route.path, {
     fields: ['description']
-  })
-})
+  }),
+  { watch: [() => route.params.slug] }
+)
 
 const title = post.value.seo?.title || post.value.title
 const description = post.value.seo?.description || post.value.description
