@@ -67,107 +67,142 @@ const getLanguageIcon = (lang: string | undefined) => {
 </script>
 
 <template>
-  <div class="grid gap-6">
+  <div class="grid gap-8">
     <!-- Featured Project (First one, larger) -->
     <NuxtLink
       v-if="projects[0]"
       :to="projects[0].path"
-      class="group relative overflow-hidden rounded-xl border border-default bg-default transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/10"
+      class="group relative overflow-hidden rounded-2xl border border-default bg-default/50 backdrop-blur-sm transition-all hover:shadow-2xl hover:shadow-primary/5"
     >
       <div class="flex flex-col lg:flex-row">
         <!-- Image -->
-        <div class="relative lg:w-1/2 aspect-video lg:aspect-auto overflow-hidden bg-elevated">
+        <div class="relative lg:w-3/5 aspect-video overflow-hidden">
           <img
             v-if="getImageSrc(projects[0].image)"
             :src="getImageSrc(projects[0].image)"
             :alt="projects[0].title"
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          <div v-else class="w-full h-full min-h-48 flex items-center justify-center">
-            <UIcon name="i-lucide-image" class="w-12 h-12 text-muted" />
+            class="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
+          >
+          <div
+            v-else
+            class="w-full h-full min-h-56 flex items-center justify-center bg-elevated"
+          >
+            <UIcon
+              name="i-lucide-image"
+              class="w-16 h-16 text-muted/50"
+            />
           </div>
           <!-- Badge -->
-          <div v-if="projects[0].badge?.label" class="absolute top-4 left-4">
-            <span class="px-3 py-1 text-xs font-medium rounded-full bg-primary text-white">
-              {{ projects[0].badge.label }}
-            </span>
+          <div
+            v-if="projects[0].badge?.label"
+            class="absolute top-4 left-4"
+          >
+            <UBadge
+              :label="projects[0].badge.label"
+              color="primary"
+              variant="solid"
+              size="md"
+            />
           </div>
         </div>
 
         <!-- Content -->
-        <div class="p-6 lg:p-8 lg:w-1/2 flex flex-col justify-center">
-          <div class="flex items-center gap-2 mb-3">
-            <UIcon :name="getLanguageIcon(projects[0].main_language)" class="w-5 h-5 text-primary" />
-            <span class="text-sm font-medium text-muted">{{ projects[0].main_language || 'Code' }}</span>
+        <div class="p-6 lg:p-8 lg:w-2/5 flex flex-col justify-center gap-4">
+          <div class="flex items-center gap-3">
+            <UBadge
+              :label="projects[0].main_language || 'Code'"
+              :icon="getLanguageIcon(projects[0].main_language)"
+              color="primary"
+              variant="subtle"
+              size="md"
+            />
           </div>
-          <h3 class="text-2xl lg:text-3xl font-bold text-highlighted mb-3 group-hover:text-primary transition-colors">
-            {{ projects[0].title }}
-          </h3>
-          <p class="text-muted leading-relaxed line-clamp-3">
-            {{ projects[0].description }}
-          </p>
-          <div class="mt-4 flex items-center text-primary font-medium">
-            <span>View project</span>
-            <UIcon name="i-lucide-arrow-right" class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+          <div>
+            <h3 class="text-2xl lg:text-3xl font-bold text-highlighted mb-3 group-hover:text-primary transition-colors duration-200">
+              {{ projects[0].title }}
+            </h3>
+            <p class="text-muted leading-relaxed line-clamp-4">
+              {{ projects[0].description }}
+            </p>
+          </div>
+          <div class="flex items-center gap-2 text-primary font-semibold mt-auto pt-2">
+            <span>Explore project</span>
+            <UIcon
+              name="i-lucide-arrow-right"
+              class="w-5 h-5 transition-transform duration-200 group-hover:translate-x-2"
+            />
           </div>
         </div>
       </div>
     </NuxtLink>
 
     <!-- Other Projects Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       <NuxtLink
         v-for="project in projects.slice(1)"
         :key="project.path"
         :to="project.path"
-        class="group relative overflow-hidden rounded-xl border border-default bg-default transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/10"
+        class="group relative flex flex-col overflow-hidden rounded-2xl border border-default bg-default/50 backdrop-blur-sm transition-all duration-200 hover:shadow-xl hover:shadow-primary/5"
       >
         <!-- Image -->
-        <div class="relative aspect-video overflow-hidden bg-elevated">
+        <div class="relative aspect-[16/10] overflow-hidden">
           <img
             v-if="getImageSrc(project.image)"
             :src="getImageSrc(project.image)"
             :alt="project.title"
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          <div v-else class="w-full h-full flex items-center justify-center">
-            <UIcon name="i-lucide-image" class="w-8 h-8 text-muted" />
+            class="w-full h-full object-cover transition-transform duration-200 group-hover:scale-110"
+          >
+          <div
+            v-else
+            class="w-full h-full flex items-center justify-center bg-elevated"
+          >
+            <UIcon
+              name="i-lucide-image"
+              class="w-10 h-10 text-muted/50"
+            />
           </div>
+          <!-- Gradient overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           <!-- Language badge -->
           <div class="absolute top-3 right-3">
-            <div class="flex items-center gap-1.5 px-2 py-1 rounded-full bg-default/90 backdrop-blur-sm border border-default">
-              <UIcon :name="getLanguageIcon(project.main_language)" class="w-3.5 h-3.5 text-primary" />
-              <span class="text-xs font-medium text-highlighted">{{ project.main_language || 'Code' }}</span>
-            </div>
+            <UBadge
+              :label="project.main_language || 'Code'"
+              :icon="getLanguageIcon(project.main_language)"
+              color="neutral"
+              variant="solid"
+              size="sm"
+            />
           </div>
         </div>
 
         <!-- Content -->
-        <div class="p-4">
-          <h4 class="font-semibold text-highlighted mb-2 group-hover:text-primary transition-colors line-clamp-1">
+        <div class="flex flex-col flex-1 p-5">
+          <h4 class="font-bold text-highlighted mb-2 group-hover:text-primary transition-colors duration-200 line-clamp-1 text-lg">
             {{ project.title }}
           </h4>
-          <p class="text-sm text-muted line-clamp-2 leading-relaxed">
+          <p class="text-sm text-muted line-clamp-2 leading-relaxed flex-1">
             {{ project.description }}
           </p>
-        </div>
-
-        <!-- Hover arrow indicator -->
-        <div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-          <UIcon name="i-lucide-arrow-up-right" class="w-5 h-5 text-primary" />
+          <!-- Footer with arrow -->
+          <div class="flex items-center justify-between mt-4 pt-3 border-t border-default">
+            <span class="text-xs font-medium text-muted group-hover:text-primary transition-colors">View details</span>
+            <UIcon
+              name="i-lucide-arrow-up-right"
+              class="w-4 h-4 text-muted group-hover:text-primary transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </div>
         </div>
       </NuxtLink>
     </div>
 
     <!-- View all button -->
-    <div class="flex justify-center mt-4">
+    <div class="flex justify-center mt-6">
       <UButton
         to="/projects"
         color="primary"
-        variant="outline"
-        size="lg"
+        variant="soft"
+        size="xl"
         trailing-icon="i-lucide-arrow-right"
-        class="font-medium"
       >
         View all projects
       </UButton>
