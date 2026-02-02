@@ -36,7 +36,7 @@ const columns = [{
   }, {
     label: 'CV',
     icon: 'i-simple-icons-readme',
-    to: '/cv.pdf',
+    to: 'https://hello.cv/arnaud-michel',
     target: '_blank'
   }]
 }]
