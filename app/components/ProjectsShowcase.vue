@@ -67,16 +67,16 @@ const getLanguageIcon = (lang: string | undefined) => {
 </script>
 
 <template>
-  <div class="grid gap-8">
+  <div class="grid gap-6 sm:gap-8">
     <!-- Featured Project (First one, larger) -->
     <NuxtLink
       v-if="projects[0]"
       :to="projects[0].path"
-      class="group relative overflow-hidden rounded-2xl border border-default bg-default/50 backdrop-blur-sm transition-all hover:shadow-2xl hover:shadow-primary/5"
+      class="group relative overflow-hidden rounded-xl sm:rounded-2xl border border-default bg-default/50 backdrop-blur-sm transition-all hover:shadow-2xl hover:shadow-primary/5"
     >
-      <div class="flex flex-col lg:flex-row">
+      <div class="flex flex-col md:flex-row">
         <!-- Image -->
-        <div class="relative lg:w-3/5 aspect-video overflow-hidden">
+        <div class="relative w-full md:w-1/2 lg:w-3/5 aspect-video overflow-hidden">
           <img
             v-if="getImageSrc(projects[0].image)"
             :src="getImageSrc(projects[0].image)"
@@ -85,17 +85,17 @@ const getLanguageIcon = (lang: string | undefined) => {
           >
           <div
             v-else
-            class="w-full h-full min-h-56 flex items-center justify-center bg-elevated"
+            class="w-full h-full min-h-40 sm:min-h-56 flex items-center justify-center bg-elevated"
           >
             <UIcon
               name="i-lucide-image"
-              class="w-16 h-16 text-muted/50"
+              class="w-12 h-12 sm:w-16 sm:h-16 text-muted/50"
             />
           </div>
           <!-- Badge -->
           <div
             v-if="projects[0].badge?.label"
-            class="absolute top-4 left-4"
+            class="absolute top-3 left-3 sm:top-4 sm:left-4"
           >
             <UBadge
               :label="projects[0].badge.label"
@@ -107,8 +107,8 @@ const getLanguageIcon = (lang: string | undefined) => {
         </div>
 
         <!-- Content -->
-        <div class="p-6 lg:p-8 lg:w-2/5 flex flex-col justify-center gap-4">
-          <div class="flex items-center gap-3">
+        <div class="p-4 sm:p-6 lg:p-8 md:w-1/2 lg:w-2/5 flex flex-col justify-center gap-3 sm:gap-4">
+          <div class="flex items-center gap-2 sm:gap-3">
             <UBadge
               :label="projects[0].main_language || 'Code'"
               :icon="getLanguageIcon(projects[0].main_language)"
@@ -118,18 +118,18 @@ const getLanguageIcon = (lang: string | undefined) => {
             />
           </div>
           <div>
-            <h3 class="text-2xl lg:text-3xl font-bold text-highlighted mb-3 group-hover:text-primary transition-colors duration-200">
+            <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold text-highlighted mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-200">
               {{ projects[0].title }}
             </h3>
-            <p class="text-muted leading-relaxed line-clamp-4">
+            <p class="text-sm sm:text-base text-muted leading-relaxed line-clamp-3 sm:line-clamp-4">
               {{ projects[0].description }}
             </p>
           </div>
-          <div class="flex items-center gap-2 text-primary font-semibold mt-auto pt-2">
+          <div class="flex items-center gap-2 text-primary font-semibold mt-auto pt-1 sm:pt-2 text-sm sm:text-base">
             <span>Explore project</span>
             <UIcon
               name="i-lucide-arrow-right"
-              class="w-5 h-5 transition-transform duration-200 group-hover:translate-x-2"
+              class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-hover:translate-x-2"
             />
           </div>
         </div>
@@ -137,15 +137,15 @@ const getLanguageIcon = (lang: string | undefined) => {
     </NuxtLink>
 
     <!-- Other Projects Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
       <NuxtLink
         v-for="project in projects.slice(1)"
         :key="project.path"
         :to="project.path"
-        class="group relative flex flex-col overflow-hidden rounded-2xl border border-default bg-default/50 backdrop-blur-sm transition-all duration-200 hover:shadow-xl hover:shadow-primary/5"
+        class="group relative flex flex-col overflow-hidden rounded-xl sm:rounded-2xl border border-default bg-default/50 backdrop-blur-sm transition-all duration-200 hover:shadow-xl hover:shadow-primary/5"
       >
         <!-- Image -->
-        <div class="relative aspect-[16/10] overflow-hidden">
+        <div class="relative aspect-video sm:aspect-[16/10] overflow-hidden">
           <img
             v-if="getImageSrc(project.image)"
             :src="getImageSrc(project.image)"
@@ -158,13 +158,13 @@ const getLanguageIcon = (lang: string | undefined) => {
           >
             <UIcon
               name="i-lucide-image"
-              class="w-10 h-10 text-muted/50"
+              class="w-8 h-8 sm:w-10 sm:h-10 text-muted/50"
             />
           </div>
           <!-- Gradient overlay -->
           <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           <!-- Language badge -->
-          <div class="absolute top-3 right-3">
+          <div class="absolute top-2 right-2 sm:top-3 sm:right-3">
             <UBadge
               :label="project.main_language || 'Code'"
               :icon="getLanguageIcon(project.main_language)"
@@ -176,19 +176,19 @@ const getLanguageIcon = (lang: string | undefined) => {
         </div>
 
         <!-- Content -->
-        <div class="flex flex-col flex-1 p-5">
-          <h4 class="font-bold text-highlighted mb-2 group-hover:text-primary transition-colors duration-200 line-clamp-1 text-lg">
+        <div class="flex flex-col flex-1 p-3 sm:p-4 lg:p-5">
+          <h4 class="font-bold text-highlighted mb-1.5 sm:mb-2 group-hover:text-primary transition-colors duration-200 line-clamp-1 text-base sm:text-lg">
             {{ project.title }}
           </h4>
-          <p class="text-sm text-muted line-clamp-2 leading-relaxed flex-1">
+          <p class="text-xs sm:text-sm text-muted line-clamp-2 leading-relaxed flex-1">
             {{ project.description }}
           </p>
           <!-- Footer with arrow -->
-          <div class="flex items-center justify-between mt-4 pt-3 border-t border-default">
+          <div class="flex items-center justify-between mt-3 sm:mt-4 pt-2 sm:pt-3 border-t border-default">
             <span class="text-xs font-medium text-muted group-hover:text-primary transition-colors">View details</span>
             <UIcon
               name="i-lucide-arrow-up-right"
-              class="w-4 h-4 text-muted group-hover:text-primary transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted group-hover:text-primary transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             />
           </div>
         </div>
@@ -196,13 +196,14 @@ const getLanguageIcon = (lang: string | undefined) => {
     </div>
 
     <!-- View all button -->
-    <div class="flex justify-center mt-6">
+    <div class="flex justify-center mt-4 sm:mt-6">
       <UButton
         to="/projects"
         color="primary"
         variant="soft"
-        size="xl"
+        size="lg"
         trailing-icon="i-lucide-arrow-right"
+        class="sm:text-base"
       >
         View all projects
       </UButton>
