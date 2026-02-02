@@ -151,7 +151,7 @@ const getLanguageIcon = (lang: string | undefined) => {
         class="group relative flex flex-col overflow-hidden rounded-xl sm:rounded-2xl border border-default bg-default/50 backdrop-blur-sm transition-all duration-200 hover:shadow-xl hover:shadow-primary/5"
       >
         <!-- Image -->
-        <div class="relative aspect-video sm:aspect-[16/10] overflow-hidden">
+        <div class="relative aspect-video sm:aspect-16/10 overflow-hidden">
           <img
             v-if="getImageSrc(project.image)"
             :src="getImageSrc(project.image)"
@@ -168,7 +168,7 @@ const getLanguageIcon = (lang: string | undefined) => {
             />
           </div>
           <!-- Gradient overlay -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+          <div class="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
           <!-- Language badge -->
           <div class="absolute top-2 right-2 sm:top-3 sm:right-3">
             <UBadge
